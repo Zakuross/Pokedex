@@ -125,11 +125,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                     Positioned(
                                       bottom: 5,
                                       right: 5,
-                                      child: CachedNetworkImage(
-                                        imageUrl: snapshot.data?[index]['img'], // Safely access the image URL
-                                        height: 100,
-                                        fit: BoxFit.fitHeight,
-                                      ),
+                                      child: Hero(
+                                        tag: index,
+                                        child: CachedNetworkImage(
+                                          imageUrl: snapshot.data?[index]['img'], // Safely access the image URL
+                                          height: 100,
+                                          fit: BoxFit.fitHeight,
+                                        ),
+                                      )
                                     ),
 
                                     // Add other Positioned widgets similarly...
@@ -145,7 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   color: type == 'Grass' ? Colors.greenAccent: type == "Fire" ? Colors.redAccent : type == "Water" ? Colors.blue
                                       : type == "Electric" ? Colors.yellow : type == "Rock" ? Colors.grey : type == "Ground" ? Colors.brown
                                       : type == "Psychic" ? Colors.indigo : type == "Fighting" ? Colors.orange : type == "Bug" ? Colors.lightGreenAccent
-                                      : type == "Ghost" ? Colors.deepPurple : type == "Normal" ? Colors.black26 : type == "Poison" ? Colors.deepPurpleAccent : Colors.pink,
+                                      : type == "Ghost" ? Colors.deepPurple : type == "Normal" ? Colors.grey : type == "Poison" ? Colors.deepPurpleAccent : Colors.pink,
                                   heroTag: index,
                                 )));
                               },
